@@ -64,3 +64,23 @@ body.lms-export-body{margin:0}
 .lms-prose img{display:block;max-width:100%;height:auto}.lms-prose table{display:block;overflow-x:auto}.lms-prose blockquote{border-left:3px solid var(--lms-brand);padding-left:16px;margin-left:0}.lms-prose h2,.lms-prose h3{font-size:1.25em}.lms-prose li{margin:6px 0}
 .lms-search-label{display:grid;gap:6px;font-size:13px}.lms-search-label input{width:100%;min-width:0;padding:10px;border:1px solid var(--lms-border);border-radius:var(--lms-radius);background:var(--lms-background);color:var(--lms-text);font:inherit}
 @media(max-width:599px){.lms-slide.lms-player-stage{padding:32px 50px}.lms-prose pre{padding:12px;font-size:12px}.lms-slide-content h2{font-size:26px}}
+
+/* Compact branding and mobile navigation. */
+#lms-root .lms-header{flex-wrap:nowrap;align-items:center;padding:16px 24px;gap:16px}
+#lms-root .lms-brand h1{margin:0;font-size:30px;letter-spacing:-1.2px;line-height:1.2;white-space:nowrap}
+#lms-root .lms-header-actions{width:auto;flex-wrap:nowrap;gap:10px}
+.lms-desktop-actions{display:flex;align-items:center;gap:10px}
+#lms-root.lms-settings-page .lms-header-actions [data-lms=outline]{display:grid!important}
+#lms-root .lms-menu-toggle{display:none;width:44px;height:44px;padding:0;place-items:center;background:transparent;border-color:var(--lms-border)}
+.lms-menu-toggle svg path{transform-box:view-box;transform-origin:12px 12px;transition:transform .22s ease,opacity .15s ease}
+.lms-menu-open .lms-menu-top{transform:translateY(6px) rotate(45deg);transform-origin:12px 6px}
+.lms-menu-open .lms-menu-bottom{transform:translateY(-6px) rotate(-45deg);transform-origin:12px 18px}
+.lms-menu-open .lms-menu-middle{opacity:0}
+#lms-root .lms-mobile-menu{position:absolute;inset:0 0 0 auto;z-index:20;width:min(320px,85vw);padding:24px 20px;background:var(--lms-surface);border-left:1px solid var(--lms-border);box-shadow:-12px 0 32px #0003;overflow:auto;overscroll-behavior:contain;visibility:hidden;transform:translateX(105%);transition:transform .22s ease,visibility .22s;display:flex;flex-direction:column;gap:8px}
+#lms-root .lms-mobile-menu button{text-align:left;width:100%;min-height:48px;background:transparent;border-color:transparent}
+#lms-root .lms-mobile-menu button[aria-current=page]{background:color-mix(in srgb,var(--lms-brand) 14%,var(--lms-surface));border-color:var(--lms-brand)}
+#lms-root .lms-menu-scrim{position:absolute;inset:0;z-index:15;width:100%;height:100%;border:0;border-radius:0;padding:0;background:#0006;cursor:pointer}
+#lms-root .lms-menu-scrim[hidden]{display:none}
+#lms-root.lms-menu-open .lms-mobile-menu{visibility:visible;transform:translateX(0)}
+@media(max-width:767px){#lms-root .lms-header{padding:12px 16px;gap:12px}#lms-root .lms-brand h1{font-size:28px}#lms-root .lms-header-actions{gap:8px}#lms-root .lms-desktop-actions{display:none}#lms-root .lms-menu-toggle{display:grid}}
+#lms-root.lms-menu-open .lms-mobile-menu{transition:transform .22s ease,visibility 0s}
