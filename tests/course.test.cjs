@@ -1,0 +1,10 @@
+const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path'),assert=require('node:assert/strict');const root=path.resolve(__dirname,'..');
+const zlib=require('node:zlib'),course=JSON.parse(zlib.gunzipSync(fs.readFileSync(path.join(root,'course.json.gz')))),manifest=JSON.parse(fs.readFileSync(path.join(root,'source-manifest.json'),'utf8'));
+if(fs.existsSync(path.join(root,'course.json')))assert.deepEqual(JSON.parse(fs.readFileSync(path.join(root,'course.json'),'utf8')),course,'Compressed model must match editable local JSON');
+const ctx={window:{}};vm.createContext(ctx);
+vm.runInContext(fs.readFileSync(path.join(root,'lms-runtime.js'),'utf8')+';globalThis.api=LMS;',ctx);const validated=ctx.api.validate(course);assert.equal(ctx.api.ready(validated).length,0);
+const nodes=ctx.api.flatten(validated.sections),decks=nodes.filter(n=>n.type==='slides'),slides=decks.flatMap(n=>n.slides);assert.equal(manifest.sources.length,501);assert.equal(decks.length,503);assert.equal(nodes.filter(n=>n.type==='quiz').length,5);assert.equal(new Set(manifest.sources.map(m=>m.path)).size,501);
+for(const m of manifest.sources){assert.ok(decks.some(n=>n.id===m.lessonId));assert.notEqual(m.router,'pages');assert.ok(!m.path.startsWith('docs/02-pages/'));}assert.equal(manifest.excludedSources.length,208);
+const original=ctx.api.flatten(course.sections).filter(n=>n.type==='slides').flatMap(n=>n.slides);for(let i=0;i<slides.length;i++){assert.equal(slides[i].body,original[i].body,'No runtime truncation');assert.ok(slides[i].body.trim());assert.ok(slides[i].body.length<=20000);assert.equal((slides[i].body.match(/^```/gm)||[]).length%2,0,'Code fences '+slides[i].id);}
+for(const n of [...nodes.filter(n=>n.type==='quiz'),validated.finalQuiz])for(const q of n.questions){assert.ok(q.answer>=0&&q.answer<q.options.length);assert.ok(q.explanation);assert.equal(new Set(q.options).size,q.options.length);}
+console.log(`PASS: 501 source mappings, 503 lesson decks, ${slides.length} slides, compressed model parity, runtime validation and assessment integrity`);

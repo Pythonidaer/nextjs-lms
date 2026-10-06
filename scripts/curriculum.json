@@ -1,0 +1,297 @@
+{
+  "orientation": [
+    [
+      "What this course contains",
+      "The official Next.js 16.3.8 App Router documentation: getting started, guides, glossary, API reference, plus shared architecture/community and relevant troubleshooting. Pages Router lesson tracks and Pages-specific troubleshooting are excluded. App Router migration/comparison guidance remains in its original context."
+    ],
+    [
+      "A manageable learning path",
+      "Prerequisites: JavaScript/TypeScript, React components/hooks, HTML/CSS and basic HTTP. Start with App Router Getting Started in order and build the practice project. Use guides, API and troubleshooting chapters as reference rather than reading every configuration option immediately."
+    ],
+    [
+      "Your study loop",
+      "Choose one chapter. Read its goal, study one or two sections and write a note. Attempt the local exercise, then compare the self-check. Read all slides to enable completion. Quizzes pass at 80% with retakes. Progress is browser-local; exercises are manually reviewed. This site does not execute Next.js code."
+    ],
+    [
+      "Version and feature status",
+      "Pinned release: 16.3.8. Preserve experimental, unstable, deprecated and previous-model notices. Check the installed version, runtime and feature flags before applying examples. Use App Router conventions throughout your project."
+    ],
+    [
+      "Find what you need",
+      "Outline search matches titles and full lesson text. Reference sections start collapsed. Code keeps filenames and package-manager labels. Visual references link to official assets. Separate /learn tutorials, blogs and older releases are outside this course. Turn off Unlock all lessons in Settings to apply the final completion gate."
+    ]
+  ],
+  "practice": {
+    "installation": [
+      "Create a TypeScript App Router project. Run development and production builds.",
+      "Use create-next-app and documented scripts, check the required Node version and open the dev URL. Keep secrets out of source control."
+    ],
+    "project-structure": [
+      "Organize /courses routes, shared components and server-only data helpers.",
+      "Keep route files under app, shared UI in a components folder and trusted data access isolated. Public files belong in public. Folder naming alone does not enforce security."
+    ],
+    "layouts-and-pages": [
+      "Build /courses and /courses/[id] with a shared root layout.",
+      "Use layout.tsx for shared UI and page.tsx for each route. Define html/body in the root layout and use the documented async params convention."
+    ],
+    "linking-and-navigating": [
+      "Link the course list to details and observe direct-load versus client-navigation behavior.",
+      "Use next/link, test loading states and inspect prefetch behavior for the specific route and configuration."
+    ],
+    "server-and-client-components": [
+      "Read course data on the server and add an interactive client bookmark button.",
+      "Keep the query in a Server Component and use client at the small interactive boundary. Pass serializable props; keep secrets and trusted data helpers out of the client graph."
+    ],
+    "fetching-data": [
+      "Fetch course details and show an appropriate loading state.",
+      "Await trusted data access at the intended boundary. Deliberately choose freshness and caching; do not assume all fetch calls are cached automatically."
+    ],
+    "mutating-data": [
+      "Submit an enrollment form and show validation feedback.",
+      "Validate untrusted inputs and authenticate/authorize in trusted mutation code. Return expected errors as state and invalidate affected data deliberately."
+    ],
+    "caching": [
+      "Compare caching a public catalog with a private learner record.",
+      "State which caching model and feature flags you use. Public reusable data may be shared; user-specific data and access checks need deliberate isolation."
+    ],
+    "revalidating": [
+      "Update a course title and refresh affected views.",
+      "Choose supported path/tag invalidation based on data dependencies. Explain whether consumers see stale or fresh data and which contexts the API supports."
+    ],
+    "error-handling": [
+      "Create a missing-course page and recoverable unexpected-error state.",
+      "Use notFound for a missing resource and an error boundary for unexpected failures. Show expected validation errors as state and provide retry where recovery is possible."
+    ],
+    "css": [
+      "Style responsive course cards with keyboard focus states.",
+      "Choose a supported styling approach such as CSS Modules. Check scope, import order, responsive behavior, focus visibility and contrast."
+    ],
+    "image-optimization": [
+      "Add course thumbnails and check loading/layout shift.",
+      "Use documented Image props, meaningful alt text, dimensions or a valid fill container, responsive sizes and permitted remote sources."
+    ],
+    "font-optimization": [
+      "Load a font and inspect fallback behavior.",
+      "Use next/font with the documented settings, apply its class/variable and check readability and layout before/after loading."
+    ],
+    "metadata-and-og-images": [
+      "Add course metadata and a social preview.",
+      "Use static metadata or generateMetadata as appropriate. Add the applicable file convention and verify generated output and preview behavior."
+    ],
+    "route-handlers": [
+      "Create a JSON lookup with invalid-ID and unauthorized-request cases.",
+      "Use route.ts with supported method exports and meaningful response statuses. Validate inputs, enforce object access and avoid leaking internal error details."
+    ],
+    "proxy": [
+      "Add a redirect rule and explain what it does not protect.",
+      "Use the documented proxy convention and matcher. Protected data and mutations still require authorization in trusted server code."
+    ],
+    "deploying": [
+      "Choose deployment for authenticated enrollment writes.",
+      "Choose a server-capable host for runtime server features. Static export supports a subset. Verify production build, secrets and deployment logs."
+    ],
+    "upgrading": [
+      "Write a version upgrade checklist.",
+      "Read version-specific changes, apply supported codemods and verify configuration, representative routes, mutations, rendering and deployment."
+    ]
+  },
+  "capstone": [
+    [
+      "Project brief",
+      "Build a local TypeScript App Router learning dashboard with course list/details, an enrollment form and progress view. Include shared layouts, navigation, responsive styles, metadata and loading/error/empty states. Deliver source code, tests and a design note. This static LMS is the study material, not your project runtime."
+    ],
+    [
+      "Boundaries and security",
+      "Read public courses on the server. Keep interactive client boundaries small. Authenticate, authorize and validate enrollment reads/writes in server code. Test another learner’s record ID and invalid inputs. Explain what crosses the server/client boundary."
+    ],
+    [
+      "Caching and performance",
+      "State your caching model and whether Cache Components is enabled. Classify shared public and private data. Invalidate dependencies after writes. Inspect bundle size, images, font loading and streaming boundaries. Test a cold load and client navigation."
+    ],
+    [
+      "Tests and deployment",
+      "Write meaningful interaction tests and an end-to-end enrollment flow with failure cases. Run a production build. Choose a host supporting your server features, configure secrets and verify keyboard navigation, output and logs."
+    ],
+    [
+      "Self-review rubric",
+      "Score 0–2 each: route structure; Server/Client boundaries; validated/authorized writes; caching/revalidation; resilient UI states; accessible responsive UI; tests; deployment/migration notes. Aim for 13/16 and fix every access-control failure. Manual review; no verified certificate."
+    ],
+    [
+      "Architecture review",
+      "Explain your routing, server/client boundaries, caching model, supported runtime and deployment mode. Compare a public course catalog with private enrollment data. Identify one experimental or deprecated API you avoided and document your supported alternative."
+    ]
+  ],
+  "quizzes": {
+    "app/getting-started": [
+      [
+        "Where should an interactive bookmark button live?",
+        "In a small Client Component boundary",
+        "In every server data helper",
+        "In next.config.js",
+        "Interactive handlers need a client boundary while trusted data access can remain on the server."
+      ],
+      [
+        "What does an App Router root layout include?",
+        "The html and body structure",
+        "getServerSideProps",
+        "A Pages _document export",
+        "Root layouts define the App Router document structure."
+      ],
+      [
+        "Where should an enrollment action validate inputs and access?",
+        "In trusted server code",
+        "Only in a disabled UI button",
+        "Only in the client route guard",
+        "Server mutation entry points must validate input and authorize the caller."
+      ],
+      [
+        "Which behavior fits a missing course?",
+        "The documented not-found state",
+        "An exposed database stack trace",
+        "A silent empty success",
+        "Missing resources should produce a meaningful not-found response."
+      ],
+      [
+        "Which deployment supports runtime authenticated writes?",
+        "A server-capable deployment",
+        "A plain static export without a server",
+        "Only an image folder",
+        "Static export does not provide runtime server actions or every server feature."
+      ],
+      [
+        "Which is the right starting point for routing links?",
+        "The next/link component",
+        "A database migration",
+        "A stylesheet import",
+        "Link enables supported client navigation and prefetch behavior."
+      ],
+      [
+        "How should remote course thumbnails avoid layout shift?",
+        "Use appropriate dimensions or a valid fill layout",
+        "Omit all sizing information",
+        "Change the page title repeatedly",
+        "Reserve image space and use documented responsive image settings."
+      ]
+    ],
+    "app/guides": [
+      [
+        "How should personalized learner data be handled?",
+        "Identity-aware access and deliberate cache isolation",
+        "Public shared caching for all users",
+        "Only hide the page link",
+        "Authentication, authorization and cache isolation must work together."
+      ],
+      [
+        "What follows a cache-affecting mutation?",
+        "Invalidate the intended dependencies deliberately",
+        "Assume all caches always update automatically",
+        "Delete unrelated caches at random",
+        "Choose supported path/tag/freshness APIs for the intended behavior."
+      ],
+      [
+        "Why use a loading or Suspense boundary?",
+        "Show useful UI while a subtree resolves",
+        "Bypass authorization",
+        "Cache every request forever",
+        "Boundaries localize waiting and allow useful UI to appear."
+      ],
+      [
+        "What should an upgrade plan inspect?",
+        "Version changes and representative production behavior",
+        "Only the framework logo",
+        "Only whether installation exits",
+        "Codemods help, but behavior and deployment still require verification."
+      ],
+      [
+        "What belongs in an end-to-end enrollment test?",
+        "Success, validation failure and unauthorized access",
+        "Only a screenshot of the title",
+        "Only a mock that always succeeds",
+        "Test meaningful user flows and failure/recovery states."
+      ],
+      [
+        "How should secrets be exposed to client code?",
+        "They should remain in trusted server environments",
+        "Put them in every NEXT_PUBLIC variable",
+        "Include them in client props",
+        "Public environment variables and client bundles are visible to users."
+      ]
+    ],
+    "app/api-reference": [
+      [
+        "What does use client mark?",
+        "A client-side module boundary",
+        "A guarantee all data stays secret",
+        "An HTTP handler method",
+        "Imports across the boundary may enter the client dependency graph."
+      ],
+      [
+        "What is route.ts used for?",
+        "HTTP route handlers",
+        "Every React component",
+        "Only CSS declarations",
+        "Route handlers implement request/response endpoints."
+      ],
+      [
+        "What should a navigation hook match?",
+        "Its documented router and component context",
+        "Any router API interchangeably",
+        "Only the filename extension",
+        "App and Pages navigation APIs have different contracts."
+      ],
+      [
+        "How should experimental API notices be treated?",
+        "Check status and required flags before use",
+        "Assume all documented APIs are stable",
+        "Ignore version history",
+        "Documented existence does not remove experimental constraints."
+      ],
+      [
+        "When reading request-specific data, what should you inspect?",
+        "The API’s async behavior and rendering implications",
+        "Only the font size",
+        "Only the app icon",
+        "Request APIs and caching/rendering interactions depend on their documented contracts."
+      ]
+    ],
+    "architecture": [
+      [
+        "What should accessibility verification include?",
+        "Keyboard navigation, focus and meaningful semantics",
+        "Only visual color selection",
+        "Only build speed",
+        "Usability includes input, focus and assistive-technology behavior."
+      ],
+      [
+        "What does Fast Refresh support?",
+        "A development feedback workflow",
+        "Production authorization",
+        "A guarantee of persistent database state",
+        "Fast Refresh is a development feature, not application security or persistence."
+      ],
+      [
+        "Why check supported browsers?",
+        "To verify the framework support target and application features",
+        "To avoid testing all client interactions",
+        "To assume every API needs no fallback",
+        "Framework support does not guarantee every additional application feature works everywhere."
+      ]
+    ],
+    "messages": [
+      [
+        "What helps diagnose a Next.js error?",
+        "Exact message, version, router and a minimal reproduction",
+        "Only the app name",
+        "Only a logo screenshot",
+        "Troubleshooting depends on the actual failing behavior and configuration."
+      ],
+      [
+        "What follows applying a suggested fix?",
+        "Reproduce the failure and verify related behavior",
+        "Assume every similar error is solved",
+        "Skip production builds indefinitely",
+        "Verify the original failure and relevant application behavior."
+      ]
+    ]
+  }
+}

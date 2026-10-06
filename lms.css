@@ -55,3 +55,12 @@ body.lms-export-body{margin:0}
 @media(max-width:599px){.lms-header{flex-wrap:wrap}.lms-header-actions{width:100%;gap:8px}.lms-back-button{margin-right:auto}}
 
 #lms-root.lms-settings-page [data-lms=outline]{display:none!important}
+
+/* Long-form documentation and safe code examples. */
+.lms-slide-content .lms-prose{white-space:normal;font-size:calc(clamp(16px,1.3vw,19px) * var(--lms-scale))}
+.lms-prose a{color:var(--lms-brand);text-decoration:underline;text-underline-offset:3px}
+.lms-prose pre{white-space:pre;overflow-x:auto;padding:18px;background:var(--lms-background);border:1px solid var(--lms-border);border-radius:6px;font:14px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;max-width:100%}
+.lms-prose code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.lms-prose :not(pre)>code{background:var(--lms-background);padding:2px 4px;border-radius:3px}
+.lms-prose img{display:block;max-width:100%;height:auto}.lms-prose table{display:block;overflow-x:auto}.lms-prose blockquote{border-left:3px solid var(--lms-brand);padding-left:16px;margin-left:0}.lms-prose h2,.lms-prose h3{font-size:1.25em}.lms-prose li{margin:6px 0}
+.lms-search-label{display:grid;gap:6px;font-size:13px}.lms-search-label input{width:100%;min-width:0;padding:10px;border:1px solid var(--lms-border);border-radius:var(--lms-radius);background:var(--lms-background);color:var(--lms-text);font:inherit}
+@media(max-width:599px){.lms-slide.lms-player-stage{padding:32px 50px}.lms-prose pre{padding:12px;font-size:12px}.lms-slide-content h2{font-size:26px}}
