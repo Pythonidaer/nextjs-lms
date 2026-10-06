@@ -42,7 +42,7 @@ body.lms-export-body{margin:0}
 /* Viewport shell: outline and learner content scroll independently. */
 #lms-root{height:100vh;height:100dvh;min-height:0;overflow:hidden}
 #lms-root .lms-header-actions>[data-lms=outline]{display:block}
-#lms-root .lms-shell{position:relative;overflow:hidden;min-height:0}
+#lms-root .lms-shell{position:relative;overflow:clip;min-height:0}
 #lms-root .lms-outline{display:block;min-height:0;overflow:auto;overscroll-behavior:contain}
 #lms-root .lms-outline[hidden]{display:none}
 #lms-root.lms-sidebar-collapsed .lms-shell{grid-template-columns:minmax(0,1fr)}
@@ -76,8 +76,8 @@ body.lms-export-body{margin:0}
 .lms-menu-open .lms-menu-top{transform:translateY(6px) rotate(45deg);transform-origin:12px 6px}
 .lms-menu-open .lms-menu-bottom{transform:translateY(-6px) rotate(-45deg);transform-origin:12px 18px}
 .lms-menu-open .lms-menu-middle{opacity:0}
-#lms-root .lms-mobile-menu{position:absolute;inset:0 0 0 auto;z-index:20;width:min(320px,85vw);padding:24px 20px;background:var(--lms-surface);border-left:1px solid var(--lms-border);box-shadow:-12px 0 32px #0003;overflow:auto;overscroll-behavior:contain;visibility:hidden;transform:translateX(105%);transition:transform .22s ease,visibility .22s;display:flex;flex-direction:column;gap:8px}
-#lms-root .lms-mobile-menu button{text-align:left;width:100%;min-height:48px;background:transparent;border-color:transparent}
+#lms-root .lms-mobile-menu{position:absolute;inset:0 0 0 auto;z-index:20;width:min(320px,75vw);padding:24px 20px;background:var(--lms-surface);border-left:1px solid var(--lms-border);box-shadow:-12px 0 32px #0003;overflow:auto;overscroll-behavior:contain;visibility:hidden;transform:translateX(105%);transition:transform .22s ease,visibility .22s;display:flex;flex-direction:column;gap:8px}
+#lms-root .lms-mobile-menu button{text-align:left;width:100%;min-height:52px;font-size:18px;font-weight:600;background:transparent;border-color:transparent}
 #lms-root .lms-mobile-menu button[aria-current=page]{background:color-mix(in srgb,var(--lms-brand) 14%,var(--lms-surface));border-color:var(--lms-brand)}
 #lms-root .lms-menu-scrim{position:absolute;inset:0;z-index:15;width:100%;height:100%;border:0;border-radius:0;padding:0;background:#0006;cursor:pointer}
 #lms-root .lms-menu-scrim[hidden]{display:none}
